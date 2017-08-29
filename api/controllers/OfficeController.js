@@ -16,7 +16,16 @@ module.exports = {
     },function(e){
       return res.send(e);
     });
-    
+  },
+  add: function(req,res){
+    var obj = req.body;
+    var connection = DbService.connectDefault();
+    var Office = connection.model('Office', officeSchema);
+    Office.create(obj).then(function(doc){
+      return res.send();
+    },function(e){
+      return res.send(e);
+    });
   }
 };
 
